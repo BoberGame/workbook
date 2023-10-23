@@ -1,0 +1,43 @@
+.form__control {
+  display: flex;
+  align-items: center;
+  padding: 0.8em 1em;
+
+  border-radius: 8px;
+  border: 1px solid #000;
+  cursor: pointer;
+  font-size: 1.2rem;
+  line-height: 1.25;
+  user-select: none;
+
+  & > sup {
+    align-self: flex-start;
+  }
+
+  &:has(.form__input:checked) {
+    background-color: #cdedfd;
+  }
+
+  @media (max-width: 576px) {
+    border-radius: 6px;
+    font-size: 1rem;
+  }
+
+  @media (max-width: 374px) {
+    font-size: 0.8rem;
+  }
+}
+
+.form__input {
+  position: absolute;
+  visibility: hidden;
+  opacity: 0;
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: #fff;
+  margin: 0;
+}
+
+.text {
+  user-select: none;
+}

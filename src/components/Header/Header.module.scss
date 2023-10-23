@@ -1,0 +1,33 @@
+.header {
+  height: 50px;
+  padding: 15px;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.25);
+  position: relative;
+  z-index: 100;
+
+  @media (max-width: 576px) {
+    justify-content: flex-end;
+  }
+}
+
+.header__title {
+  @media (max-width: 576px) {
+    display: none;
+  }
+}
+
+.header__right {
+  display: flex;
+  align-items: center;
+  column-gap: 15px;
+}
+
+.user__info {
+  display: flex;
+  align-items: center;
+  column-gap: 5px;
+}

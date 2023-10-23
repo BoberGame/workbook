@@ -1,0 +1,14 @@
+.img__wrapper {
+  display: flex;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
+
+.img {
+  width: 100px;
+
+  @media (max-width: 1024px) {
+    width: 50px;
+  }
+}

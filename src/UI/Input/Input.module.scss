@@ -1,0 +1,23 @@
+.form__control {
+  display: block;
+  width: 100%;
+  padding: 0.8em 1em;
+
+  border: 1px solid #9c9cab;
+  background-color: transparent;
+  font-family: inherit;
+  color: var(--clr-black);
+  border-radius: 5px;
+  font-size: 1rem;
+  line-height: 1.2;
+
+  &:focus {
+    outline: 0;
+    border-color: #497bdf;
+    box-shadow: 0 0 10px 2px rgb(73, 123, 223, 0.25);
+  }
+
+  @media (max-width: 576px) {
+    font-size: 0.8rem;
+  }
+}

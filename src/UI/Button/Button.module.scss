@@ -1,0 +1,48 @@
+.btn {
+  display: inline-block;
+  padding: 0.35em 1.5em;
+
+  font-size: 1.125rem;
+  line-height: 1.5;
+  text-align: center;
+  background-color: transparent;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease-out,
+    color 0.2s ease-out,
+    border-color 0.2s ease-out;
+  border-radius: 5px;
+  border: 1px solid var(--clr-black);
+  color: var(--clr-black);
+
+  &:disabled {
+    color: darken(#fff, 40);
+    border-color: darken(#fff, 40);
+  }
+
+  &:not(:disabled):where(:hover, :focus-visible) {
+    background-color: var(--clr-accent);
+    color: var(--clr-white);
+    border-color: var(--clr-accent);
+  }
+
+  &.success {
+    background-color: green;
+  }
+}
+
+.sm {
+  font-size: 0.875rem;
+}
+
+.md {
+  font-size: 1.125rem;
+
+  @media (max-width: 574px) {
+    font-size: 1rem;
+  }
+
+  @media (max-width: 374px) {
+    font-size: 0.9rem;
+  }
+}
