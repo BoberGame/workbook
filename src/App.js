@@ -22,7 +22,7 @@ function App() {
 
   return (
     <UserContext.Provider value={{ isAuth, setIsAuth, course, userData, setUserData }}>
-      <BrowserRouter>
+      <BrowserRouter basename="/workbook">
         <Header />
         <main className="app">
           <AppRouter />

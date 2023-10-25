@@ -10,6 +10,7 @@ import LessonResult from '../../components/LessonResult/LessonResult';
 import Instruments from '../../components/Instruments/Instruments';
 
 const LessonHeader = ({ question, step, maxSteps }) => {
+  console.log(question);
   return (
     <div className={styles.header}>
       <ProgressBar currentStep={step} maxSteps={maxSteps} />
