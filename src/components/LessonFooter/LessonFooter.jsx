@@ -1,12 +1,16 @@
-import React from 'react';
-import Button from '../../UI/Button/Button';
-import styles from './Lesson.module.scss';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import React from 'react';
+import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import styles from './LessonFooter.module.scss';
+import Button from '../UI/Button/Button';
 
-const LessonFooter = ({ step, setStep, questions, isLessonEnd, saveUserAnswer }) => {
-  const moveOnHandler = async () => {
-    await saveUserAnswer();
+const LessonFooter = ({ step, setStep, saveUserAnswer }) => {
+  const { questions } = useSelector((state) => state.lessons);
+  const isLessonEnd = step === questions.length;
+
+  const moveOnHandler = () => {
+    saveUserAnswer();
     setStep(step + 1);
   };
 
@@ -32,8 +36,6 @@ const LessonFooter = ({ step, setStep, questions, isLessonEnd, saveUserAnswer })
 
 LessonFooter.propTypes = {
   step: PropTypes.number.isRequired,
-  questions: PropTypes.array.isRequired,
-  isLessonEnd: PropTypes.bool.isRequired,
   setStep: PropTypes.func.isRequired,
   saveUserAnswer: PropTypes.func.isRequired,
 };

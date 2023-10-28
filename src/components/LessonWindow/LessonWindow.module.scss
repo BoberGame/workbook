@@ -1,0 +1,28 @@
+.window {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 550px;
+  margin-inline: auto;
+  max-width: 900px;
+  width: 100%;
+
+  border-radius: 16px;
+  padding: 24px 32px;
+  border: 1px solid #9c9cab;
+  background-color: var(--clr-white);
+
+  @media (max-width: 768px) {
+    padding: 20px 28px;
+    min-height: 500px;
+  }
+
+  @media (max-width: 576px) {
+    min-height: 450px;
+    padding: 16px;
+  }
+
+  @media (max-width: 374px) {
+    min-height: 300px;
+    border-radius: 12px;
+  }
+}

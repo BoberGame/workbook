@@ -1,35 +1,36 @@
-import { BrowserRouter } from 'react-router-dom';
 import './App.scss';
 import Header from './components/Header/Header';
-import { UserContext } from './context';
 import AppRouter from './components/AppRouter';
-import { useEffect, useState } from 'react';
-import data from '../src/data.json';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchCourse } from './store/slices/lessonsSlice';
+import Loader from './components/Loader/Loader';
+import { AUTH_STORAGE_KEY, setUserData } from './store/slices/authSlice';
 
-const { course } = data;
-
-function App() {
-  const [isAuth, setIsAuth] = useState(false);
-  const [userData, setUserData] = useState({ fullName: '', group: '' });
+const App = () => {
+  const dispatch = useDispatch();
+  const { isFetching } = useSelector((state) => state.lessons);
 
   useEffect(() => {
-    const userData = localStorage.getItem('userData');
+    const userData = JSON.parse(localStorage.getItem(AUTH_STORAGE_KEY));
     if (userData) {
-      setUserData(JSON.parse(userData));
-      setIsAuth(true);
+      dispatch(setUserData({ userData }));
     }
-  }, []);
+    dispatch(fetchCourse());
+  }, [dispatch]);
+
+  if (isFetching) {
+    return <Loader />;
+  }
 
   return (
-    <UserContext.Provider value={{ isAuth, setIsAuth, course, userData, setUserData }}>
-      <BrowserRouter basename="/workbook">
-        <Header />
-        <main className="app">
-          <AppRouter />
-        </main>
-      </BrowserRouter>
-    </UserContext.Provider>
+    <>
+      <Header />
+      <main className="app">
+        <AppRouter />
+      </main>
+    </>
   );
-}
+};
 
 export default App;

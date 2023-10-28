@@ -1,11 +1,11 @@
 import React from 'react';
-import styles from './RadioButton.module.scss';
+import styles from './CheckboxButton.module.scss';
 import PropTypes from 'prop-types';
 
-const RadioButton = ({ name, index, value, onChangeHandler }) => {
-  const id = `radioOption-${index}`;
+const CheckboxButton = ({ name, index, value, onChangeHandler }) => {
+  const id = `checkboxOption-${index}`;
 
-  const onChange = ({ target }) => {
+  const onChange = () => {
     onChangeHandler();
   };
 
@@ -13,9 +13,9 @@ const RadioButton = ({ name, index, value, onChangeHandler }) => {
     <label className={styles.form__control} htmlFor={id}>
       <input
         className={styles.form__input}
-        type="radio"
+        type="checkbox"
         id={id}
-        name={`${name}-radio-option`}
+        name={`${name}-checkbox-option`}
         value={value}
         onChange={onChange}
       />
@@ -24,11 +24,11 @@ const RadioButton = ({ name, index, value, onChangeHandler }) => {
   );
 };
 
-RadioButton.propTypes = {
+CheckboxButton.propTypes = {
   name: PropTypes.string.isRequired,
   index: PropTypes.number.isRequired,
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
   onChangeHandler: PropTypes.func.isRequired,
 };
 
-export default RadioButton;
+export default CheckboxButton;

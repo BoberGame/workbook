@@ -1,8 +1,8 @@
 import { Navigate } from 'react-router-dom';
-import Home from '../Pages/Home/Home';
-import Lesson from '../Pages/Lesson/Lesson';
-import Login from '../Pages/Login/Login';
-import UserProfile from '../Pages/UserProfile/UserProfile';
+import Home from '../pages/Home/Home';
+import Lesson from '../pages/Lesson/Lesson';
+import Login from '../pages/Login/Login';
+import UserProfile from '../pages/UserProfile/UserProfile';
 
 const privateRoutes = [
   {

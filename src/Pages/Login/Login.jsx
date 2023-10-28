@@ -1,11 +1,12 @@
-import React, { useContext } from 'react';
+import { useDispatch } from 'react-redux';
+import React from 'react';
 import styles from './Login.module.scss';
-import Button from '../../UI/Button/Button';
 import { Formik } from 'formik';
-import { UserContext } from '../../context';
+import Button from '../../components/UI/Button/Button';
+import { signIn } from '../../store/slices/authSlice';
 
 const Login = () => {
-  const { setIsAuth, setUserData } = useContext(UserContext);
+  const dispatch = useDispatch();
 
   return (
     <div className={styles.wrapper}>
@@ -15,9 +16,7 @@ const Login = () => {
           initialValues={{ fullName: '', group: '' }}
           onSubmit={(values, { setSubmitting }) => {
             setTimeout(() => {
-              setIsAuth(true);
-              setUserData(values);
-              localStorage.setItem('userData', JSON.stringify(values));
+              dispatch(signIn({ userData: values }));
               setSubmitting(false);
             }, 400);
           }}

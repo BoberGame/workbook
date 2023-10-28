@@ -1,15 +1,12 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import styles from './Header.module.scss';
-import { UserContext } from '../../context';
-import Button from '../../UI/Button/Button';
+import Button from '../UI/Button/Button';
+import { useDispatch, useSelector } from 'react-redux';
+import { signOut } from '../../store/slices/authSlice';
 
 const Header = () => {
-  const { userData, isAuth, setIsAuth, setUserData } = useContext(UserContext);
-  const logout = () => {
-    setIsAuth(false);
-    setUserData({ fullName: '', group: '' });
-    localStorage.removeItem('userData');
-  };
+  const dispatch = useDispatch();
+  const { isAuth, userData } = useSelector((state) => state.auth);
 
   return (
     <header className={styles.header}>
@@ -21,7 +18,7 @@ const Header = () => {
               <span>{userData.fullName}</span>
               <span>{userData.group}</span>
             </div>
-            <Button size="sm" onClickHandler={logout}>
+            <Button size="sm" onClickHandler={() => dispatch(signOut())}>
               Выйти
             </Button>
           </>

@@ -1,6 +1,6 @@
 import React from 'react';
-import Input from '../../../UI/Input/Input';
 import styles from './AnswerInput.module.scss';
+import Input from '../../UI/Input/Input';
 
 const AnswerInput = ({ onChangeHandler }) => {
   return (

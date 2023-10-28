@@ -35,13 +35,8 @@
 .img {
   max-height: 550px;
   object-fit: cover;
-  transition: transform 0.15s;
   user-select: none;
   -webkit-user-drag: none;
-
-  &:hover {
-    transform: scale(1.1);
-  }
 
   @media (max-width: 576px) {
     max-height: 400px;

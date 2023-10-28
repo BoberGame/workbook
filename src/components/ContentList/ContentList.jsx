@@ -1,10 +1,10 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import styles from './ContentList.module.scss';
 import { NavLink } from 'react-router-dom';
-import { UserContext } from '../../context';
+import { useSelector } from 'react-redux';
 
 const ContentList = () => {
-  const { course } = useContext(UserContext);
+  const { course } = useSelector((state) => state.lessons);
 
   return (
     <ul className={styles.list}>

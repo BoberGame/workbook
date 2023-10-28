@@ -1,11 +1,11 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import styles from './LessonResult.module.scss';
 import { removeSpaces } from '../../utils/formatChemicalFormula';
-import { UserContext } from '../../context';
+import { useSelector } from 'react-redux';
 
-const LessonResult = ({ userAnswers, questions }) => {
-  const { userData } = useContext(UserContext);
-
+const LessonResult = () => {
+  const { userData } = useSelector((state) => state.auth);
+  const { questions, userAnswers } = useSelector((state) => state.lessons);
   let totalCorrectAnswers = 0;
   let totalSkipped = 0;
   let totalMistakes = 0;

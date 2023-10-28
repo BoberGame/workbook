@@ -1,11 +1,10 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import ContentList from '../../components/ContentList/ContentList';
 import styles from './Home.module.scss';
-import { UserContext } from '../../context';
+import { useSelector } from 'react-redux';
 
 const Home = () => {
-  const { course } = useContext(UserContext);
-  // console.log(course);
+  const { course } = useSelector((state) => state.lessons);
   return (
     <div className={styles.wrapper}>
       <div className={styles.window}>

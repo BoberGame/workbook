@@ -1,51 +1,49 @@
 import React from 'react';
-import RadioButton from '../../../UI/RadioButton/RadioButton';
-import CheckboxButton from '../../../UI/CheckboxButton/CheckboxButton';
 import AnswerInput from '../AnswerInput/AnswerInput';
 import PropTypes from 'prop-types';
 import { isFormula } from '../../../utils/isChemicalFormula';
 import { formatFormula } from '../../../utils/formatChemicalFormula';
+import RadioButton from '../../UI/RadioButton/RadioButton';
+import CheckboxButton from '../../UI/CheckboxButton/CheckboxButton';
+import { setCurrentUserAnswer } from '../../../store/slices/lessonsSlice';
+import { useDispatch, useSelector } from 'react-redux';
 
-const getAnswerData = (answerIndex, answerText, questionIndex) => ({
-  answerIndex,
-  answerText,
-  questionIndex,
-});
-
-const Answer = ({
-  answerText,
-  answerIndex,
-  answerType,
-  currentAnswer,
-  setCurrentAnswer,
-  questionIndex,
-}) => {
+const Answer = ({ answerText, answerIndex, questionType, questionIndex }) => {
+  const { currentUserAnswer } = useSelector((state) => state.lessons);
+  const dispatch = useDispatch();
   const value = isFormula(answerText) ? formatFormula(answerText) : answerText;
+
+  const userAnswer = {
+    answerIndex,
+    answerText,
+    questionIndex,
+  };
+
   const singleAnswerHandler = () => {
-    const userAnswer = getAnswerData(answerIndex, answerText, questionIndex);
-    setCurrentAnswer([userAnswer]);
+    dispatch(setCurrentUserAnswer([userAnswer]));
   };
 
   const multipleAnswerHandler = () => {
-    const userAnswer = getAnswerData(answerIndex, answerText, questionIndex);
-    const isOldAnswer = currentAnswer.some(({ answerIndex }) => answerIndex === userAnswer.answerIndex);
+    const isOldAnswer = currentUserAnswer.some(
+      ({ answerIndex }) => answerIndex === userAnswer.answerIndex
+    );
 
     if (isOldAnswer) {
-      const updatedAnswers = currentAnswer.filter(
+      const updatedAnswers = currentUserAnswer.filter(
         (answer) => answer.answerIndex !== userAnswer.answerIndex
       );
-      setCurrentAnswer(updatedAnswers);
+      dispatch(setCurrentUserAnswer(updatedAnswers));
     } else {
-      setCurrentAnswer([...currentAnswer, userAnswer]);
+      dispatch(setCurrentUserAnswer([...currentUserAnswer, userAnswer]));
     }
   };
 
   const inputAnswerHandler = (answerText) => {
-    const userAnswer = getAnswerData(answerIndex, answerText, questionIndex);
-    setCurrentAnswer([userAnswer]);
+    userAnswer.answerText = answerText;
+    dispatch(setCurrentUserAnswer([userAnswer]));
   };
 
-  if (answerType === 'single') {
+  if (questionType === 'single') {
     return (
       <li>
         <RadioButton
@@ -57,7 +55,7 @@ const Answer = ({
       </li>
     );
   }
-  if (answerType === 'multiple') {
+  if (questionType === 'multiple') {
     return (
       <li>
         <CheckboxButton
@@ -69,7 +67,7 @@ const Answer = ({
       </li>
     );
   }
-  if (answerType === 'input') {
+  if (questionType === 'input') {
     return <AnswerInput onChangeHandler={inputAnswerHandler} />;
   }
 };
@@ -77,9 +75,6 @@ const Answer = ({
 Answer.propTypes = {
   answerText: PropTypes.string.isRequired,
   answerIndex: PropTypes.number.isRequired,
-  answerType: PropTypes.string.isRequired,
-  currentAnswer: PropTypes.array,
-  setCurrentAnswer: PropTypes.func,
   questionIndex: PropTypes.number.isRequired,
 };
 
