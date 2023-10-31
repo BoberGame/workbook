@@ -9,7 +9,7 @@ const initialState = {
   question: {},
   currentUserAnswer: [],
   isFetching: false,
-  isLoaded: false,
+  isLoading: false,
 };
 
 export const fetchCourse = createAsyncThunk('lessons/fetch', async (_, thunkAPI) => {
@@ -23,7 +23,6 @@ const lessonsSlice = createSlice({
   reducers: {
     setQuestions: (state, action) => {
       state.questions = action.payload;
-      state.isLoaded = true;
     },
     setQuestion: (state, action) => {
       state.question = action.payload.question;
@@ -38,10 +37,12 @@ const lessonsSlice = createSlice({
       const { index, newAnswer } = action.payload;
       state.userAnswers[index] = newAnswer;
     },
+    setIsLoading: (state, action) => {
+      state.isLoading = action.payload;
+    },
   },
   extraReducers: ({ addCase }) => {
     addCase(fetchCourse.pending, (state) => {
-      state.isLoaded = false;
       state.isFetching = true;
     });
     addCase(fetchCourse.fulfilled, (state, action) => {
@@ -52,6 +53,12 @@ const lessonsSlice = createSlice({
   },
 });
 
-export const { setQuestions, setQuestion, setCurrentUserAnswer, setUserAnswers, replaceUserAnswers } =
-  lessonsSlice.actions;
+export const {
+  setQuestions,
+  setQuestion,
+  setCurrentUserAnswer,
+  setUserAnswers,
+  replaceUserAnswers,
+  setIsLoading,
+} = lessonsSlice.actions;
 export default lessonsSlice.reducer;

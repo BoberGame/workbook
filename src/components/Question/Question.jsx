@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 
 const Question = () => {
   const { question } = useSelector((state) => state.lessons);
-  console.log(question.imgSrc);
+
   return (
     <div>
       <h1 className={styles.title}>{question.title}</h1>
