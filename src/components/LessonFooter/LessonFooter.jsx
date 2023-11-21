@@ -1,16 +1,14 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import styles from './LessonFooter.module.scss';
 import Button from '../UI/Button/Button';
 
-const LessonFooter = ({ step, setStep, saveUserAnswer }) => {
-  const { questions } = useSelector((state) => state.lessons);
-  const isLessonEnd = step === questions.length;
+const LessonFooter = ({ step, setStep, lessons, saveHandler }) => {
+  const isLessonEnd = step === lessons.questions.length;
 
   const moveOnHandler = () => {
-    saveUserAnswer();
+    saveHandler();
     setStep(step + 1);
   };
 
@@ -22,11 +20,11 @@ const LessonFooter = ({ step, setStep, saveUserAnswer }) => {
         </Link>
       ) : (
         <>
-          <Button disabled={step === 0} type="button" onClickHandler={() => setStep(step - 1)}>
+          <Button disabled={step === 0} type="button" clickHandler={() => setStep(step - 1)}>
             Назад
           </Button>
-          <Button disabled={isLessonEnd} type="button" onClickHandler={moveOnHandler}>
-            {step === questions.length - 1 ? 'Подвести итоги' : 'Вперёд'}
+          <Button disabled={isLessonEnd} type="button" clickHandler={moveOnHandler}>
+            {step === lessons.questions.length - 1 ? 'Подвести итоги' : 'Вперёд'}
           </Button>
         </>
       )}
@@ -37,7 +35,8 @@ const LessonFooter = ({ step, setStep, saveUserAnswer }) => {
 LessonFooter.propTypes = {
   step: PropTypes.number.isRequired,
   setStep: PropTypes.func.isRequired,
-  saveUserAnswer: PropTypes.func.isRequired,
+  lessons: PropTypes.object.isRequired,
+  saveHandler: PropTypes.func.isRequired,
 };
 
 export default LessonFooter;

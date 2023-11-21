@@ -6,8 +6,7 @@ const initialState = {
   userAnswers: [],
   lessons: [],
   questions: [],
-  question: {},
-  currentUserAnswer: [],
+  selectedAnswers: [],
   isFetching: false,
   isLoading: false,
 };
@@ -24,11 +23,8 @@ const lessonsSlice = createSlice({
     setQuestions: (state, action) => {
       state.questions = action.payload;
     },
-    setQuestion: (state, action) => {
-      state.question = action.payload.question;
-    },
-    setCurrentUserAnswer: (state, action) => {
-      state.currentUserAnswer = action.payload;
+    selectAnswer: (state, action) => {
+      state.selectedAnswers = action.payload;
     },
     setUserAnswers: (state, action) => {
       state.userAnswers = action.payload;
@@ -39,6 +35,11 @@ const lessonsSlice = createSlice({
     },
     setIsLoading: (state, action) => {
       state.isLoading = action.payload;
+    },
+    refreshUserAnswers: (state) => {
+      state.userAnswers = [];
+      state.selectedAnswers = [];
+      state.questions = [];
     },
   },
   extraReducers: ({ addCase }) => {
@@ -53,12 +54,4 @@ const lessonsSlice = createSlice({
   },
 });
 
-export const {
-  setQuestions,
-  setQuestion,
-  setCurrentUserAnswer,
-  setUserAnswers,
-  replaceUserAnswers,
-  setIsLoading,
-} = lessonsSlice.actions;
-export default lessonsSlice.reducer;
+export const { reducer: lessonsReducer, actions: lessonsActions } = lessonsSlice;

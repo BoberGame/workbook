@@ -1,10 +1,8 @@
 import React from 'react';
 import styles from './Question.module.scss';
-import { useSelector } from 'react-redux';
+import PropTypes from 'prop-types';
 
-const Question = () => {
-  const { question } = useSelector((state) => state.lessons);
-
+const Question = ({ question }) => {
   return (
     <div>
       <h1 className={styles.title}>{question.title}</h1>
@@ -15,6 +13,10 @@ const Question = () => {
       )}
     </div>
   );
+};
+
+Question.propTypes = {
+  question: PropTypes.object.isRequired,
 };
 
 export default Question;

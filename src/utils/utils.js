@@ -10,17 +10,23 @@ const formatFormula = (formula) => {
     }
   };
 
+  const isOperator = (char) => char === '+' || char === '-';
+
   for (let i = 0; i < formula.length; i++) {
     const char = formula[i];
-    if (char === '(') {
+    const prevChar = formula[i - 1];
+    const isClosingBracket = char === ')' && isNaN(prevChar) && isOperator(prevChar);
+    const isNumber = !isNaN(char) || isOperator(char);
+
+    if (char === '(' && !isNaN(formula[i + 1])) {
       pushCurrentElement(currentElement);
       insideParentheses = true;
-    } else if (char === ')') {
+    } else if (isClosingBracket) {
       pushCurrentElement(<sup key={i}>{currentElement}</sup>);
       insideParentheses = false;
-    } else if (insideParentheses && (!isNaN(char) || char === '-' || char === '+')) {
+    } else if (insideParentheses && isNumber) {
       currentElement += char;
-    } else if (!isNaN(char) || char === '-' || char === '+') {
+    } else if (isNumber) {
       currentElement += char;
     } else {
       pushCurrentElement(currentElement);
@@ -33,4 +39,10 @@ const formatFormula = (formula) => {
 
 const removeSpaces = (str) => str.replace(/\s/g, '');
 
-export { formatFormula, removeSpaces };
+const isFormula = (str) => {
+  // const chemicalFormulaRegExp = /^[A-Z][a-z]?\d*(?:\([A-Z][a-z]?\d*\))?\d*$/;
+  const chemicalFormulaRegExp = /[+-]/;
+  return chemicalFormulaRegExp.test(str);
+};
+
+export { formatFormula, removeSpaces, isFormula };

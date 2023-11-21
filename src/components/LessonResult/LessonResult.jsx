@@ -1,11 +1,14 @@
 import React from 'react';
 import styles from './LessonResult.module.scss';
-import { removeSpaces } from '../../utils/formatChemicalFormula';
 import { useSelector } from 'react-redux';
+import { removeSpaces } from '../../utils/utils';
+import { QUESTION_TYPES } from '../../constants';
 
 const LessonResult = () => {
-  const { userData } = useSelector((state) => state.auth);
-  const { questions, userAnswers } = useSelector((state) => state.lessons);
+  const userData = useSelector((state) => state.auth.userData);
+  const lessons = useSelector((state) => state.lessons);
+  const { questions, userAnswers } = lessons;
+
   let totalCorrectAnswers = 0;
   let totalSkipped = 0;
   let totalMistakes = 0;
@@ -31,28 +34,26 @@ const LessonResult = () => {
     }
   };
 
-  for (let index = 0; index < totalQuestions; index++) {
-    const { correctAnswers, type } = questions[index];
-    const userAnswer = userAnswers[index];
+  for (let questionIndex = 0; questionIndex < totalQuestions; questionIndex++) {
+    const { correctAnswers, type } = questions[questionIndex];
+    const userAnswer = userAnswers[questionIndex];
 
     if (!userAnswer.length) {
       totalSkipped += 1;
-    } else if (type === 'single') {
-      const [{ answerIndex }] = userAnswer;
-      checkAnswer(correctAnswers[0] === answerIndex, index);
-    } else if (type === 'multiple') {
+    } else if (type === QUESTION_TYPES.single) {
+      const [{ index }] = userAnswer;
+      checkAnswer(correctAnswers[0] === index, questionIndex);
+    } else if (type === QUESTION_TYPES.multiple) {
       if (correctAnswers.length !== userAnswer.length) {
-        addError(index);
+        addError(questionIndex);
       } else {
-        const isCorrect = correctAnswers.every(
-          (answer, index) => answer === userAnswer[index].answerIndex
-        );
-        checkAnswer(isCorrect, index);
+        const isCorrect = correctAnswers.every((answer, index) => answer === userAnswer[index].index);
+        checkAnswer(isCorrect, questionIndex);
       }
-    } else if (type === 'input') {
-      const [{ answerText }] = userAnswer;
-      const isCorrect = removeSpaces(correctAnswers[0]) === removeSpaces(answerText);
-      checkAnswer(isCorrect, index);
+    } else if (type === QUESTION_TYPES.input) {
+      const [{ text }] = userAnswer;
+      const isCorrect = removeSpaces(correctAnswers[0]) === removeSpaces(text);
+      checkAnswer(isCorrect, questionIndex);
     }
   }
 

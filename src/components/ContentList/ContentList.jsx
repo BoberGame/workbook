@@ -4,8 +4,7 @@ import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 const ContentList = () => {
-  const { course } = useSelector((state) => state.lessons);
-
+  const course = useSelector((state) => state.lessons.course);
   return (
     <ul className={styles.list}>
       {course.lessons.map(({ title }, index) => (

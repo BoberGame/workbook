@@ -3,23 +3,23 @@ import { useParams } from 'react-router-dom';
 import styles from './Lesson.module.scss';
 import Instruments from '../../components/Instruments/Instruments';
 import { useDispatch, useSelector } from 'react-redux';
-import { setIsLoading, setQuestions } from '../../store/slices/lessonsSlice';
+import { lessonsActions } from '../../store/slices/lessonsSlice';
 import Loader from '../../components/Loader/Loader';
 import LessonWindow from '../../components/LessonWindow/LessonWindow';
 
 const Lesson = () => {
   const dispatch = useDispatch();
   const { lessonId } = useParams();
-  const { lessons, isLoading } = useSelector((state) => state.lessons);
-  const { questions } = lessons[lessonId - 1];
+  const lessons = useSelector((state) => state.lessons);
+  const { questions } = lessons.lessons[lessonId - 1];
 
   useEffect(() => {
-    dispatch(setIsLoading(true));
-    dispatch(setQuestions(questions));
-    dispatch(setIsLoading(false));
+    // dispatch(lessonsActions.setIsLoading(true));
+    dispatch(lessonsActions.setQuestions(questions));
+    // dispatch(lessonsActions.setIsLoading(false));
   }, [dispatch, questions]);
 
-  if (isLoading) {
+  if (lessons.isLoading) {
     return <Loader />;
   }
 

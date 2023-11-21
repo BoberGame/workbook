@@ -4,11 +4,10 @@ const initialState = {
   initialized: false,
 };
 
-const lessonsSlice = createSlice({
+const appSlice = createSlice({
   name: 'app',
   initialState,
   reducers: {},
 });
 
-// export const { setInitialized } = lessonsSlice.actions;
-export default lessonsSlice.reducer;
+export const { reducer: appReducer, actions: appActions } = appSlice;

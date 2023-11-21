@@ -11,10 +11,14 @@
   user-select: none;
 
   & > sup {
+    font-size: 0.8rem;
     align-self: flex-start;
   }
 
   &:has(.form__input:checked) {
+    background-color: #cdedfd;
+  }
+  &:has(.form__input_checked) {
     background-color: #cdedfd;
   }
 

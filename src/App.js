@@ -3,19 +3,20 @@ import Header from './components/Header/Header';
 import AppRouter from './components/AppRouter';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchCourse } from './store/slices/lessonsSlice';
 import Loader from './components/Loader/Loader';
-import { AUTH_STORAGE_KEY, setUserData } from './store/slices/authSlice';
+import { AUTH_STORAGE_KEY, authActions } from './store/slices/authSlice';
+import { fetchCourse } from './store/slices/lessonsSlice';
 
 const App = () => {
   const dispatch = useDispatch();
-  const { isFetching } = useSelector((state) => state.lessons);
+  const isFetching = useSelector((state) => state.lessons.isFetching);
 
   useEffect(() => {
     const userData = JSON.parse(localStorage.getItem(AUTH_STORAGE_KEY));
     if (userData) {
-      dispatch(setUserData({ userData }));
+      dispatch(authActions.setUserData({ userData }));
     }
+
     dispatch(fetchCourse());
   }, [dispatch]);
 

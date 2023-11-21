@@ -4,7 +4,7 @@ import styles from './Home.module.scss';
 import { useSelector } from 'react-redux';
 
 const Home = () => {
-  const { course } = useSelector((state) => state.lessons);
+  const course = useSelector((state) => state.lessons.course);
   return (
     <div className={styles.wrapper}>
       <div className={styles.window}>

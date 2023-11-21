@@ -1,12 +1,6 @@
 import React from 'react';
 import { useEffect } from 'react';
-import {
-  replaceUserAnswers,
-  setCurrentUserAnswer,
-  setIsLoading,
-  setQuestion,
-  setUserAnswers,
-} from '../../store/slices/lessonsSlice';
+import { lessonsActions } from '../../store/slices/lessonsSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 import Loader from '../Loader/Loader';
@@ -18,32 +12,31 @@ import styles from './LessonWindow.module.scss';
 
 const LessonWindow = () => {
   const dispatch = useDispatch();
+  const lessons = useSelector((state) => state.lessons);
   const [step, setStep] = useState(0);
-
-  const { questions, currentUserAnswer, userAnswers, isLoading } = useSelector((state) => state.lessons);
-
+  const { questions, selectedAnswers, userAnswers, isLoading } = lessons;
   const question = questions[step];
   const isLessonEnd = step === questions.length;
-  const initialAnswerData = { answerIndex: 0, answerText: '', questionIndex: step };
+  const initialAnswerData = { index: 0, text: '', questionIndex: step, isAnswered: false };
 
   const saveUserAnswer = () => {
-    if (currentUserAnswer.length === 0) {
+    if (selectedAnswers.length === 0) {
       if (userAnswers.length === 0 || !userAnswers[step]) {
-        dispatch(setUserAnswers([...userAnswers, initialAnswerData]));
+        dispatch(lessonsActions.setUserAnswers([...userAnswers, initialAnswerData]));
       }
     } else {
-      dispatch(replaceUserAnswers({ index: step, newAnswer: currentUserAnswer }));
-      dispatch(setCurrentUserAnswer([]));
+      dispatch(lessonsActions.replaceUserAnswers({ index: step, newAnswer: selectedAnswers }));
+      dispatch(lessonsActions.selectAnswer([]));
     }
   };
 
   useEffect(() => {
-    if (question) {
-      dispatch(setIsLoading(true));
-      dispatch(setQuestion({ question }));
-      dispatch(setIsLoading(false));
-    }
-  }, [dispatch, question]);
+    console.log('Lesson window render');
+    return () => {
+      dispatch(lessonsActions.refreshUserAnswers());
+      console.log('Lessin window umnounted');
+    };
+  }, [dispatch]);
 
   if (isLoading) {
     return <Loader />;
@@ -55,11 +48,11 @@ const LessonWindow = () => {
         <LessonResult />
       ) : (
         <>
-          <LessonHeader step={step} maxSteps={questions.length} />
-          <AnswerList questionIndex={step} />
+          <LessonHeader step={step} maxSteps={questions.length} question={question} />
+          <AnswerList questionIndex={step} question={question} />
         </>
       )}
-      <LessonFooter step={step} setStep={setStep} saveUserAnswer={saveUserAnswer} />
+      <LessonFooter step={step} setStep={setStep} lessons={lessons} saveHandler={saveUserAnswer} />
     </div>
   );
 };

@@ -3,7 +3,7 @@ import React from 'react';
 import styles from './Login.module.scss';
 import { Formik } from 'formik';
 import Button from '../../components/UI/Button/Button';
-import { signIn } from '../../store/slices/authSlice';
+import { authActions } from '../../store/slices/authSlice';
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -16,7 +16,7 @@ const Login = () => {
           initialValues={{ fullName: '', group: '' }}
           onSubmit={(values, { setSubmitting }) => {
             setTimeout(() => {
-              dispatch(signIn({ userData: values }));
+              dispatch(authActions.signIn({ userData: values }));
               setSubmitting(false);
             }, 400);
           }}

@@ -4,7 +4,7 @@ import { Route, Routes } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 const AppRouter = () => {
-  const { isAuth } = useSelector((state) => state.auth);
+  const isAuth = useSelector((state) => state.auth.isAuth);
 
   return isAuth ? (
     <Routes>

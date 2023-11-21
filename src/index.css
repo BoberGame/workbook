@@ -14,13 +14,56 @@
   margin: 0;
 }
 
-
 @media (prefers-reduced-motion: no-preference) {
   html {
     scroll-behavior: smooth;
   }
 }
 
+@font-face {
+  font-family: 'Rubik';
+  src: url('./assets/fonts/subset-Rubik-Regular.woff2') format('woff2'),
+    url('./assets/fonts/subset-Rubik-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Rubik';
+  src: url('./assets/fonts/subset-Rubik-Bold.woff2') format('woff2'),
+    url('./assets/fonts/subset-Rubik-Bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Rubik';
+  src: url('./assets/fonts/subset-Rubik-Light.woff2') format('woff2'),
+    url('./assets/fonts/subset-Rubik-Light.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Rubik';
+  src: url('./assets/fonts/subset-Rubik-Italic.woff2') format('woff2'),
+    url('./assets/fonts/subset-Rubik-Italic.woff') format('woff');
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Rubik';
+  src: url('./assets/fonts/subset-Rubik-Medium.woff2') format('woff2'),
+    url('./assets/fonts/subset-Rubik-Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
 
 body {
   height: 100vh;

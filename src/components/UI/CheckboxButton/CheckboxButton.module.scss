@@ -12,6 +12,9 @@
   &:has(.form__input:checked) {
     background-color: #cdedfd;
   }
+  &:has(.form__input_checked) {
+    background-color: #cdedfd;
+  }
 
   @media (max-width: 576px) {
     font-size: 1rem;
