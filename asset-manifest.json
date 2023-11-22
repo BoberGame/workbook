@@ -1,19 +1,30 @@
 {
   "files": {
-    "main.css": "/workbook/static/css/main.413d9463.css",
-    "main.js": "/workbook/static/js/main.2786b0f8.js",
+    "main.css": "/workbook/static/css/main.b09b7e70.css",
+    "main.js": "/workbook/static/js/main.2fa2abf5.js",
     "static/js/787.f13f1b20.chunk.js": "/workbook/static/js/787.f13f1b20.chunk.js",
-    "static/media/table1.jpg": "/workbook/static/media/table1.b7f7ddceb380738f6da2.jpg",
     "static/media/bg.jpg": "/workbook/static/media/bg.0af4a8b2e04d98c50472.jpg",
-    "static/media/table2.jpg": "/workbook/static/media/table2.ca820177c3a6d6726534.jpg",
+    "static/media/table1.jpg": "/workbook/static/media/table1.b29c5e75dd74911121ca.jpg",
     "static/media/bg1.jpg": "/workbook/static/media/bg1.ecee019b40326e5f881d.jpg",
+    "static/media/table2.jpg": "/workbook/static/media/table2.832312c7202fbacee1ac.jpg",
+    "static/media/subset-Rubik-Italic.woff": "/workbook/static/media/subset-Rubik-Italic.dd4acb7b6b793d4dff7c.woff",
+    "static/media/subset-Rubik-Medium.woff": "/workbook/static/media/subset-Rubik-Medium.cfac00f8a2952f6011d6.woff",
+    "static/media/subset-Rubik-Bold.woff": "/workbook/static/media/subset-Rubik-Bold.538f33a2c5ac39908646.woff",
+    "static/media/subset-Rubik-Regular.woff": "/workbook/static/media/subset-Rubik-Regular.e7853b39feb2b092e30a.woff",
+    "static/media/subset-Rubik-Light.woff": "/workbook/static/media/subset-Rubik-Light.02e74e9508d5ff0e8556.woff",
+    "static/media/subset-Rubik-Italic.woff2": "/workbook/static/media/subset-Rubik-Italic.4fe91bc7da035395c7c7.woff2",
+    "static/media/subset-Rubik-Medium.woff2": "/workbook/static/media/subset-Rubik-Medium.4df6efdcde2166ec3b79.woff2",
+    "static/media/subset-Rubik-Bold.woff2": "/workbook/static/media/subset-Rubik-Bold.a5426da0ee6fe4af4ea7.woff2",
+    "static/media/subset-Rubik-Regular.woff2": "/workbook/static/media/subset-Rubik-Regular.4bed16338f5504461171.woff2",
+    "static/media/subset-Rubik-Light.woff2": "/workbook/static/media/subset-Rubik-Light.a43afa8dcf3602715aa0.woff2",
     "index.html": "/workbook/index.html",
-    "main.413d9463.css.map": "/workbook/static/css/main.413d9463.css.map",
-    "main.2786b0f8.js.map": "/workbook/static/js/main.2786b0f8.js.map",
+    "static/media/arrow-left.svg": "/workbook/static/media/arrow-left.b949670d4312a11d20ba2cfc6f198a26.svg",
+    "main.b09b7e70.css.map": "/workbook/static/css/main.b09b7e70.css.map",
+    "main.2fa2abf5.js.map": "/workbook/static/js/main.2fa2abf5.js.map",
     "787.f13f1b20.chunk.js.map": "/workbook/static/js/787.f13f1b20.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.413d9463.css",
-    "static/js/main.2786b0f8.js"
+    "static/css/main.b09b7e70.css",
+    "static/js/main.2fa2abf5.js"
   ]
 }
