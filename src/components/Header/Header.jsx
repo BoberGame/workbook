@@ -44,6 +44,7 @@ const Header = () => {
               <span>{userData.group}</span>
             </div>
             <Button
+              variant="outline"
               size="sm"
               title="Выйти из аккаунта"
               clickHandler={() => dispatch(authActions.signOut())}

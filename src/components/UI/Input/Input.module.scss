@@ -18,7 +18,7 @@
 
   &:focus {
     outline: 0;
-    border-color: #497bdf;
+    border-color: var(--clr-accent);
     box-shadow: 0 0 10px 2px rgb(73, 123, 223, 0.25);
   }
 

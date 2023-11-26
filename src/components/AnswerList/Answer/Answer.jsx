@@ -1,7 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import RadioButton from '../../UI/RadioButton/RadioButton';
-import CheckboxButton from '../../UI/CheckboxButton/CheckboxButton';
 import { lessonsActions } from '../../../store/slices/lessonsSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { formatFormula, isFormula } from '../../../utils/utils';
@@ -10,6 +8,7 @@ import { useEffect } from 'react';
 import styles from './Answer.module.scss';
 import Input from '../../UI/Input/Input';
 import { QUESTION_TYPES } from '../../../constants';
+import AnswerButton from '../../UI/AnswerButton/AnswerButton';
 
 const SingleAnswer = ({ userAnswer, checkIsAnswered, ...props }) => {
   const dispatch = useDispatch();
@@ -20,7 +19,7 @@ const SingleAnswer = ({ userAnswer, checkIsAnswered, ...props }) => {
     dispatch(lessonsActions.selectAnswer([userAnswer]));
   };
 
-  return <RadioButton changeHandler={answerHandler} isChecked={isAnswered} {...props} />;
+  return <AnswerButton type="radio" changeHandler={answerHandler} isChecked={isAnswered} {...props} />;
 };
 
 SingleAnswer.propTypes = {
@@ -45,7 +44,9 @@ const MultipleAnswer = ({ userAnswer, checkIsAnswered, ...props }) => {
     }
   };
 
-  return <CheckboxButton changeHandler={answerHandler} isChecked={isAnswered} {...props} />;
+  return (
+    <AnswerButton type="checkbox" changeHandler={answerHandler} isChecked={isAnswered} {...props} />
+  );
 };
 
 MultipleAnswer.propTypes = {

@@ -1,11 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { AUTH_STORAGE_KEY } from '../../constants';
 
 const initialState = {
   isAuth: false,
   userData: {},
 };
-
-export const AUTH_STORAGE_KEY = 'userData';
 
 const authSlice = createSlice({
   name: 'auth',

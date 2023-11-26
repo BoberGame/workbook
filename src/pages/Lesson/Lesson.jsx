@@ -24,7 +24,7 @@ const Lesson = () => {
   }
 
   return (
-    <div className={styles.wrapper}>
+    <div className={`${styles.wrapper} container`}>
       <LessonWindow />
       <Instruments />
     </div>

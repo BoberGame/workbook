@@ -4,8 +4,9 @@ import AppRouter from './components/AppRouter';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Loader from './components/Loader/Loader';
-import { AUTH_STORAGE_KEY, authActions } from './store/slices/authSlice';
+import { authActions } from './store/slices/authSlice';
 import { fetchCourse } from './store/slices/lessonsSlice';
+import { AUTH_STORAGE_KEY } from './constants';
 
 const App = () => {
   const dispatch = useDispatch();

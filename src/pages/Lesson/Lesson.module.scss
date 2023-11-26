@@ -1,16 +1,7 @@
 .wrapper {
-  width: 100%;
-  min-height: calc(100vh - 50px);
-  padding: 80px 20px 50px;
+  position: relative;
 
   background-image: url("../../assets/images/bg1.jpg");
   background-size: cover;
   background-repeat: no-repeat;
-  background-color: var(--clr-white);
-  position: relative;
-
-  @media (max-width: 576px) {
-    padding-inline: 16px;
-    padding-block-start: 50px;
-  }
 }

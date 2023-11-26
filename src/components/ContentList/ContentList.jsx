@@ -8,8 +8,10 @@ const ContentList = () => {
   return (
     <ul className={styles.list}>
       {course.lessons.map(({ title }, index) => (
-        <li className={styles.list__item} key={title}>
-          <NavLink to={`/lesson/${index + 1}`}>{title}</NavLink>
+        <li className={styles.list__item} key={index}>
+          <NavLink className={styles.list__link} to={`/lesson/${index + 1}`}>
+            {title}
+          </NavLink>
           <span className={styles.list__count}>{index + 1}</span>
         </li>
       ))}

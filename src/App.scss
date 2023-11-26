@@ -1,16 +1,13 @@
 .app {
-  // width: 100%;
-  height: calc(100vh - 50px);
-  // padding-block-start: 80px;
-  background-image: url("./assets/images/bg.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-color: #fff;
+  background-color: var(--clr-white);
 }
 
-// .btn-clear {
-//   background-color: transparent;
-//   padding: 0;
-//   cursor: pointer;
-//   border: none;
-// }
+.container {
+  min-height: calc(100vh - 50px);
+  padding: 80px 20px 50px;
+
+  @media (max-width: 576px) {
+    padding-inline: 16px;
+    padding-block-start: 50px;
+  }
+}
