@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/workbook/static/css/main.b09b7e70.css",
-    "main.js": "/workbook/static/js/main.2fa2abf5.js",
+    "main.css": "/workbook/static/css/main.b5d7bfcf.css",
+    "main.js": "/workbook/static/js/main.af0ccd74.js",
     "static/js/787.f13f1b20.chunk.js": "/workbook/static/js/787.f13f1b20.chunk.js",
     "static/media/bg.jpg": "/workbook/static/media/bg.0af4a8b2e04d98c50472.jpg",
     "static/media/table1.jpg": "/workbook/static/media/table1.b29c5e75dd74911121ca.jpg",
@@ -19,12 +19,12 @@
     "static/media/subset-Rubik-Light.woff2": "/workbook/static/media/subset-Rubik-Light.a43afa8dcf3602715aa0.woff2",
     "index.html": "/workbook/index.html",
     "static/media/arrow-left.svg": "/workbook/static/media/arrow-left.b949670d4312a11d20ba2cfc6f198a26.svg",
-    "main.b09b7e70.css.map": "/workbook/static/css/main.b09b7e70.css.map",
-    "main.2fa2abf5.js.map": "/workbook/static/js/main.2fa2abf5.js.map",
+    "main.b5d7bfcf.css.map": "/workbook/static/css/main.b5d7bfcf.css.map",
+    "main.af0ccd74.js.map": "/workbook/static/js/main.af0ccd74.js.map",
     "787.f13f1b20.chunk.js.map": "/workbook/static/js/787.f13f1b20.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.b09b7e70.css",
-    "static/js/main.2fa2abf5.js"
+    "static/css/main.b5d7bfcf.css",
+    "static/js/main.af0ccd74.js"
   ]
 }
