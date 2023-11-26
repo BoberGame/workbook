@@ -12,22 +12,12 @@
     color 0.2s ease-out,
     border-color 0.2s ease-out;
   border-radius: 5px;
-  border: 1px solid var(--clr-black);
   color: var(--clr-black);
+  border: none;
 
   &:disabled {
     color: darken(#fff, 40);
     border-color: darken(#fff, 40);
-  }
-
-  &:not(:disabled):where(:hover, :focus-visible) {
-    background-color: var(--clr-accent);
-    color: var(--clr-white);
-    border-color: var(--clr-accent);
-  }
-
-  &.success {
-    background-color: green;
   }
 }
 
@@ -45,4 +35,27 @@
   @media (max-width: 374px) {
     font-size: 0.9rem;
   }
+}
+
+.default {
+  background-color: var(--clr-accent);
+  color: var(--clr-white);
+  border-color: var(--clr-accent);
+}
+
+.outline {
+  background-color: transparent;
+  border: 1px solid var(--clr-black);
+  color: var(--clr-black);
+
+  &:not(:disabled):where(:hover, :focus-visible) {
+    background-color: var(--clr-accent);
+    color: var(--clr-white);
+    border-color: var(--clr-accent);
+  }
+}
+
+.with__icon {
+  padding: 0;
+  border: none;
 }

@@ -13,10 +13,9 @@ const BackButton = () => {
   const navigate = useNavigate();
 
   return (
-    // TODO: use Button component and add some button variants
-    <button className="btn-clear" type="button" onClick={() => navigate(-1)} title="Вернуться назад">
+    <Button variant="icon" clickHandler={() => navigate(-1)} title="Вернуться назад">
       <ArrowIcon />
-    </button>
+    </Button>
   );
 };
 
@@ -44,7 +43,11 @@ const Header = () => {
               <span>{userData.fullName}</span>
               <span>{userData.group}</span>
             </div>
-            <Button size="sm" clickHandler={() => dispatch(authActions.signOut())}>
+            <Button
+              size="sm"
+              title="Выйти из аккаунта"
+              clickHandler={() => dispatch(authActions.signOut())}
+            >
               Выйти
             </Button>
           </>

@@ -52,7 +52,7 @@ const Login = () => {
                 />
               </div>
               <div className={styles.footer}>
-                <Button type="submit" disabled={isSubmitting}>
+                <Button variant="outline" type="submit" disabled={isSubmitting}>
                   Войти
                 </Button>
               </div>

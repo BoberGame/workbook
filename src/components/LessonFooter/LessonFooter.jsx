@@ -16,14 +16,14 @@ const LessonFooter = ({ step, setStep, lessons, saveHandler }) => {
     <div className={styles.footer}>
       {isLessonEnd ? (
         <Link className={styles.footer__link} to="/home">
-          <Button>Вернуться на главную</Button>
+          <Button variant="outline">Вернуться на главную</Button>
         </Link>
       ) : (
         <>
-          <Button disabled={step === 0} type="button" clickHandler={() => setStep(step - 1)}>
+          <Button variant="outline" disabled={step === 0} clickHandler={() => setStep(step - 1)}>
             Назад
           </Button>
-          <Button disabled={isLessonEnd} type="button" clickHandler={moveOnHandler}>
+          <Button variant="outline" disabled={isLessonEnd} clickHandler={moveOnHandler}>
             {step === lessons.questions.length - 1 ? 'Подвести итоги' : 'Вперёд'}
           </Button>
         </>
